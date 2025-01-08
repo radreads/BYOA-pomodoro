@@ -8,12 +8,19 @@ const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
 const pomodoroButton = document.getElementById('pomodoro');
-const shortBreakButton = document.getElementById('shortBreak');
-const longBreakButton = document.getElementById('longBreak');
 
 const POMODORO_TIME = 25 * 60;
-const SHORT_BREAK_TIME = 5 * 60;
-const LONG_BREAK_TIME = 15 * 60;
+
+const messages = [
+    "You got this",
+    "You're doing great",
+    "You're a samurai",
+    "I love you, keep going",
+    "Play on, playa"
+];
+
+const motivationalElement = document.getElementById('motivational-message');
+let currentMessageIndex = 0;
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -25,12 +32,20 @@ function updateDisplay() {
 function startTimer() {
     if (!isRunning) {
         isRunning = true;
+        startButton.disabled = true;
+        startButton.style.opacity = '0.5';
+        pauseButton.disabled = false;
+        pauseButton.style.opacity = '1';
         timerId = setInterval(() => {
             timeLeft--;
             updateDisplay();
             if (timeLeft === 0) {
                 clearInterval(timerId);
                 isRunning = false;
+                startButton.disabled = false;
+                startButton.style.opacity = '1';
+                pauseButton.disabled = true;
+                pauseButton.style.opacity = '0.5';
                 alert('Time is up!');
             }
         }, 1000);
@@ -40,20 +55,31 @@ function startTimer() {
 function pauseTimer() {
     clearInterval(timerId);
     isRunning = false;
+    startButton.disabled = false;
+    startButton.style.opacity = '1';
+    pauseButton.disabled = true;
+    pauseButton.style.opacity = '0.5';
 }
 
 function resetTimer() {
     clearInterval(timerId);
     isRunning = false;
+    startButton.disabled = false;
+    startButton.style.opacity = '1';
+    pauseButton.disabled = true;
+    pauseButton.style.opacity = '0.5';
     timeLeft = POMODORO_TIME;
     updateDisplay();
 }
 
-function setActiveButton(button) {
-    [pomodoroButton, shortBreakButton, longBreakButton].forEach(btn => {
-        btn.classList.remove('active');
-    });
-    button.classList.add('active');
+function updateMotivationalMessage() {
+    motivationalElement.style.opacity = '0';
+    
+    setTimeout(() => {
+        motivationalElement.textContent = messages[currentMessageIndex];
+        motivationalElement.style.opacity = '1';
+        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+    }, 300);
 }
 
 // Initialize timer
@@ -65,20 +91,12 @@ startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 
-pomodoroButton.addEventListener('click', () => {
-    timeLeft = POMODORO_TIME;
-    updateDisplay();
-    setActiveButton(pomodoroButton);
-});
+// Add this after your variable declarations at the top
+pauseButton.disabled = true;
+pauseButton.style.opacity = '0.5';
 
-shortBreakButton.addEventListener('click', () => {
-    timeLeft = SHORT_BREAK_TIME;
-    updateDisplay();
-    setActiveButton(shortBreakButton);
-});
+// Initial message
+updateMotivationalMessage();
 
-longBreakButton.addEventListener('click', () => {
-    timeLeft = LONG_BREAK_TIME;
-    updateDisplay();
-    setActiveButton(longBreakButton);
-}); 
+// Rotate messages every 5 seconds
+setInterval(updateMotivationalMessage, 5000); 

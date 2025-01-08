@@ -2,15 +2,16 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    align-items: flex-start;
+    min-height: 50vh;
     margin: 0;
     background-color: #ffffff;
+    padding-top: 2rem;
 }
 
 .container {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     max-width: 480px;
     width: 100%;
 }
@@ -26,7 +27,7 @@ h1 {
     font-size: 5rem;
     font-weight: 500;
     margin: 2rem 0;
-    color: yellow;
+    color: #37352f;
     font-variant-numeric: tabular-nums;
     border: 1px solid #37352f;
     padding: 1rem 2rem;
@@ -41,8 +42,8 @@ h1 {
     cursor: pointer;
     border: 1px solid #37352f;
     border-radius: 3px;
-    background-color: transparent;
-    color: #37352f;
+    background-color: #37352f;
+    color: white;
     transition: all 0.2s ease;
 }
 
@@ -53,11 +54,11 @@ h1 {
 .controls button {
     background-color: #37352f;
     color: white;
-    border: none;
+    border: 1px solid #37352f;
 }
 
 .controls button:hover {
-    background-color: #252422;
+    background-color: #f1f1f0;
 }
 
 .mode-switches {
@@ -65,12 +66,20 @@ h1 {
 }
 
 .mode-switches button {
-    background-color: transparent;
-    color: #37352f;
+    background-color: #37352f;
+    color: white;
 }
 
 .mode-switches button.active {
     background-color: #37352f;
     color: white;
     border-color: #37352f;
+}
+
+.motivational {
+    font-style: italic;
+    color: #666666;
+    margin-bottom: 1rem;
+    min-height: 1.5em;
+    transition: opacity 0.3s ease-in-out;
 } 
