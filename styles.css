@@ -1,0 +1,76 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 480px;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #37352f;
+    margin-bottom: 2rem;
+}
+
+.timer {
+    font-size: 5rem;
+    font-weight: 500;
+    margin: 2rem 0;
+    color: #37352f;
+    font-variant-numeric: tabular-nums;
+    border: 1px solid #37352f;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.controls button, .mode-switches button {
+    font-size: 0.9rem;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: 1px solid #37352f;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #37352f;
+    transition: all 0.2s ease;
+}
+
+.controls button:hover, .mode-switches button:hover {
+    background-color: #f1f1f0;
+}
+
+.controls button {
+    background-color: #37352f;
+    color: white;
+    border: none;
+}
+
+.controls button:hover {
+    background-color: #252422;
+}
+
+.mode-switches {
+    margin-top: 1.5rem;
+}
+
+.mode-switches button {
+    background-color: transparent;
+    color: #37352f;
+}
+
+.mode-switches button.active {
+    background-color: #37352f;
+    color: white;
+    border-color: #37352f;
+} 
